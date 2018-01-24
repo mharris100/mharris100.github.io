@@ -39,7 +39,7 @@
     position: absolute;
     width: 40px;
 	height: 40px;
-	background: red;
+
 	border-radius: 100%;
     }
 
@@ -63,11 +63,10 @@
 
     	/*border-radius: 100px;*/
     }
-    #food{
+    #earth{
         position: absolute;
         width: 40px;
     	height:40px;
-    	background: green;
     	border-radius: 100px;
     }
     #scorebox{
@@ -202,10 +201,10 @@
 
         };
         newplanet()
-        function startfood(){
-        var new_food = document.createElement("img");
-        new_food.id = "food";
-        new_food.src ="images/earth.png"
+        function startearth(){
+        var new_earth = document.createElement("img");
+        new_earth.id = "earth";
+        new_earth.src ="images/earth.png"
         var frame = document.getElementById("frame");
 
         height = frame.clientHeight;
@@ -213,28 +212,28 @@
 
         random_y = (Math.random() * (height-150));
         random_x = (Math.random() * (width-150));
-        new_food.style.top = 50 + random_y + "px";
-        new_food.style.left = 50 + random_x + "px";
-        frame.appendChild(new_food);
+        new_earth.style.top = 50 + random_y + "px";
+        new_earth.style.left = 50 + random_x + "px";
+        frame.appendChild(new_earth);
     }
-        startfood()
+        startearth()
 
 
-        function newfood(){
+        function newearth(){
 
             height = frame.clientHeight;
             width = frame.clientWidth;
 
             random_y = (Math.random() * (height-150));
             random_x = (Math.random() * (width-150));
-            $("#food").css("top",  50 + random_y );
-            $("#food").css("left",  50 + random_x );
+            $("#earth").css("top",  50 + random_y );
+            $("#earth").css("left",  50 + random_x );
 
 
 
 
         };
-        newfood()
+        newearth()
 
         document.addEventListener("mousemove",
         //$("#frame").mousemove(
@@ -261,7 +260,7 @@
                 cursor.css("top", cursor_y - (cursor_height/2) )
                 }
 
-                food_touch()
+                earth_touch()
             }
         );
 
@@ -333,31 +332,31 @@
                     planet_count = 1;
 
                     document.getElementById("scorebox").innerHTML = "&nbspEarths Eaten: " + planet_count + "&nbsp&nbsp&nbsp&nbsp&nbsp Highscore:  " + highscore + "&nbsp&nbsp&nbsp&nbsp&nbsp Last score: " + last_score
-                    startfood()
+                    startearth()
                     newplanet()
                 }
                 })
 
         };
 
-        function food_touch(){
+        function earth_touch(){
             var cursor = $("#cursor")
             var cursor_radius =  (parseInt(cursor.css("width"))/2)
 
             var cursor_x = parseInt(cursor.css("left")) + cursor_radius - parseInt($("#frame").css("left"));
             var cursor_y = parseInt(cursor.css("top")) + cursor_radius - parseInt($("#frame").css("top"));
 
-            var food_radius = (parseInt($("#food").css("width"))/2);
-            var food_left = parseInt($("#food").css("left"))
-            var food_top = (parseInt($("#food").css("top")))
+            var earth_radius = (parseInt($("#earth").css("width"))/2);
+            var earth_left = parseInt($("#earth").css("left"))
+            var earth_top = (parseInt($("#earth").css("top")))
 
-            var food_x = food_left + 2 * food_radius -15;
-            var food_y = food_top + 2*food_radius -15;
+            var earth_x = earth_left + 2 * earth_radius -15;
+            var earth_y = earth_top + 2*earth_radius -15;
 
 
 
-            if ((distance_formula( food_x, food_y, cursor_x, cursor_y ) - (food_radius + cursor_radius)) < 0){
-                newfood()
+            if ((distance_formula( earth_x, earth_y, cursor_x, cursor_y ) - (earth_radius + cursor_radius)) < 0){
+                newearth()
                 planet_count += 1
                 $("#scorebox").html("&nbspEarths Eaten: " + planet_count + "&nbsp&nbsp&nbsp&nbsp&nbsp Highscore:  " + highscore + "&nbsp&nbsp&nbsp&nbsp&nbsp Last score: " + last_score)
                 newplanet()
